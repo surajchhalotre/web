@@ -1,0 +1,39 @@
+
+<h1>booking details</h1>
+<table class= "table table-bordered">
+	<thead>
+		<tr>
+			<th>name</th>
+			<th>mobile</th>
+			<th>age</th>
+            <th>check in</th>
+            <th>check out</th>
+			<th>user id</th>
+            <th>room id</th>
+            <th>cancel booking</th>
+			<th>make payment</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<% @bookings.each do |booking| %>
+			<tr>
+			
+		
+				<td><%=booking.name%></td>
+				<td><%=booking.mobile%></td>
+			     <td><%=booking.age%></td>
+                 <td><%=booking.start_date%></td>
+                 <td><%=booking.end_date%></td>
+				 <td><%=booking.user_id%></td>
+                 <td><%=booking.room_id%></td>
+                 <td><%= link_to 'cancel_booking', booking_path(booking.id), class: "btn btn-danger", method: :delete, data: { confirm: "are you want to cancel this booking?"} %> 
+				 <td><%= link_to 'make payment', payment_path(booking.id), class: "btn btn-success"%></td>
+				 </tr>
+				 
+		<%end%>
+  </tbody>
+</table>
+
+
+<td><%= link_to 'new booking',rooms_path, class: "btn btn-success"%>
